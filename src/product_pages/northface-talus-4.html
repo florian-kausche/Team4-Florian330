@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sleep Outside | North Face Talus 4-person tent</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="../js/product.js" type="module"></script>
+    <script src="../js/headerFooter.js" type="module"></script>
+    <script type="module">
+      import { injectHeaderFooter } from '../js/headerFooter.js';
+      injectHeaderFooter();
+      // Add to Cart button logic
+      import { getLocalStorage, setLocalStorage } from '../js/utils.mjs';
+      import { updateCartCount } from '../js/headerFooter.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('addToCart');
+        if (btn) {
+          btn.addEventListener('click', function() {
+            // Build product object (static for this page)
+            const product = {
+              Id: '985RF',
+              Name: 'The North Face Talus Tent - 4-Person, 3-Season',
+              NameWithoutBrand: 'Talus Tent - 4-Person, 3-Season',
+              Brand: { Name: 'The North Face' },
+              Image: '../images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg',
+              FinalPrice: 199.99,
+              SuggestedRetailPrice: 299.0,
+              Colors: [{ ColorName: 'Golden Oak/Saffron Yellow' }],
+              quantity: 1
+            };
+            let cart = getLocalStorage('so-cart') || [];
+            const existing = cart.find(item => String(item.Id) === product.Id);
+            if (existing) {
+              existing.quantity = (existing.quantity || 1) + 1;
+            } else {
+              cart.push(product);
+            }
+            setLocalStorage('so-cart', cart);
+            updateCartCount();
+            window.location.href = '../cart/add.html';
+          });
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- header will be injected here -->
+
+    <main class="divider">
+      <div class="hero">
+        <img
+          src="../images/banner-sm.jpg"
+          srcset="../images/banner-sm.jpg 500w, ../images/banner.jpg"
+          alt="image of a high mountain lake"
+        />
+        <div class="mission">
+          <p>
+            Our mission is to provide you with everything you need to sleep
+            outside comfortably at an affordable price.
+          </p>
+        </div>
+      </div>
+
+      <section class="product-detail">
+        <h3>The North Face</h3>
+
+        <h2 class="divider">Talus Tent - 4-Person, 3-Season</h2>
+
+        <img
+          class="divider"
+          src="../images/tents/the-north-face-talus-tent-4-person-3-season-in-golden-oak-saffron-yellow~p~985rf_01~320.jpg"
+          alt="Talus Tent - 4-Person, 3-Season"
+        />
+
+        <p class="product-card__price">$199.99</p>
+
+        <p class="product__color">Golden Oak/Saffron Yellow</p>
+
+        <p class="product__description">
+          Enjoy a fun night under stars with your favorite people in The North
+          Face&#39;s Talus four-person tent, featuring durable construction with
+          a roomy interior, an advanced DAC Featherlite NSL pole system and an
+          easy to pitch design.
+        </p>
+
+        <div class="product-detail__add">
+          <button id="addToCart" data-id="989CG">Add to Cart</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer will be injected here -->
+  </body>
+</html>

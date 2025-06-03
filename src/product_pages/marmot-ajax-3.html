@@ -1,0 +1,107 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sleep Outside | Marmot Ajax 3 person tent</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="../js/product.js" type="module"></script>
+    <script src="../js/headerFooter.js" type="module"></script>
+    <script type="module">
+      import { injectHeaderFooter } from '../js/headerFooter.js';
+      injectHeaderFooter();
+    </script>
+  </head>
+
+  <body>
+    <!-- header will be injected here -->
+
+    <main class="divider">
+      <div class="hero">
+        <img
+          src="../images/banner-sm.jpg"
+          srcset="../images/banner-sm.jpg 500w, ../images/banner.jpg"
+          alt="image of a high mountain lake"
+        />
+        <div class="mission">
+          <p>
+            Our mission is to provide you with everything you need to sleep
+            outside comfortably at an affordable price.
+          </p>
+        </div>
+      </div>
+
+      <section class="product-detail">
+        <h3>Marmot</h3>
+
+        <h2 class="divider">Ajax Tent - 3-Person, 3-Season</h2>
+
+        <img
+          class="divider"
+          src="../images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg"
+          alt="Marmot Ajax tent"
+        />
+
+        <p class="product-card__price">$199.99</p>
+
+        <p class="product__color">Pale Pumpkin/Terracotta</p>
+
+        <p class="product__description">
+          Get out and enjoy nature with Marmot&#39;s Ajax tent, featuring a
+          smart design with durable, waterproof construction and two doors for
+          easy access.
+        </p>
+
+        <div class="product-detail__add">
+          <button id="addToCart" data-id="880RR">Add to Cart</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer will be injected here -->
+    <script>
+      // Make Add to Cart button functional for this static product page
+      document.addEventListener("DOMContentLoaded", function() {
+        const addToCartBtn = document.getElementById("addToCart");
+        if (!addToCartBtn) return;
+        addToCartBtn.addEventListener("click", function() {
+          // Product data for Marmot Ajax 3
+          const product = {
+            Id: "880RR",
+            Name: "Marmot Ajax Tent - 3-Person, 3-Season",
+            NameWithoutBrand: "Ajax Tent - 3-Person, 3-Season",
+            Brand: { Id: "1308", Name: "Marmot" },
+            Image: "../images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg",
+            FinalPrice: 199.99,
+            SuggestedRetailPrice: 300.00,
+            ListPrice: 199.99,
+            Colors: [{ ColorCode: "01", ColorName: "Pale Pumpkin/Terracotta" }],
+            DescriptionHtmlSimple: "Get out and enjoy nature with Marmot's Ajax tent, featuring a smart design with durable, waterproof construction and two doors for easy access.",
+            quantity: 1
+          };
+          let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+          const existing = cart.find(item => item.Id === product.Id);
+          if (existing) {
+            existing.quantity = (existing.quantity || 1) + 1;
+          } else {
+            cart.push(product);
+          }
+          localStorage.setItem("so-cart", JSON.stringify(cart));
+          // Optionally update cart count in header if present
+          const cartCount = document.getElementById("cart-count");
+          if (cartCount) {
+            const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            cartCount.textContent = total;
+          }
+          // Redirect to cart/add.html
+          window.location.href = "/src/cart/add.html";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!-- This is the main home page for Sleep Outside -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags for responsive design and character encoding -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Home</title>
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="src/css/style.css" />
+    <!-- Header and footer injection -->
+    <script src="src/js/headerFooter.js" type="module"></script>
+    <script src="src/js/main.js" type="module"></script>
+    <script type="module">import { injectHeaderFooter } from './src/js/headerFooter.js'; injectHeaderFooter();</script>
+  </head>
+
+  <body>
+    <header class="divider" id="main-header"></header>
+    <main class="divider">
+      <div class="hero">
+        <img
+          src="src/images/banner-sm.jpg"
+          srcset="src/images/banner-sm.jpg 500w, src/images/banner.jpg"
+          alt="image of a high mountain lake"
+        />
+
+        <div class="mission">
+          <p>
+            Our mission is to provide you with everything you need to sleep
+            outside comfortably at an affordable price.
+          </p>
+        </div>
+      </div>
+
+      <section class="intro-message">
+        <div class="intro-message__container">
+          <h1 class="intro-message__headline">Ready to <span class="intro-message__highlight">SLEEP outside</span>?</h1>
+          <p class="intro-message__text">
+             What we really need is to get outside...in fact
+            Discover the best gear for your next adventure. Shop Tents, Backpacks, Sleeping Bags, and Hammocks—all at an <span class="intro-message__highlight">affordable price</span>.<br />
+             Our mission is to provide you with everything you need to do this comfortably at an affordable price
+            <span class="intro-message__sub">Your comfort, your adventure, your way.</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="categories">
+        <div class="category-list professional">
+          <a class="category-link" href="src/index.html?category=tents">
+            <img src="src/images/tents/category-backpacks.svg" alt="Tents" />
+            <div class="category-label">Tents</div>
+          </a>
+          <a class="category-link" href="src/index.html?category=backpacks">
+            <img src="src/images/tents/category-hammocks.svg" alt="Backpacks" />
+            <div class="category-label">Backpacks</div>
+          </a>
+          <a class="category-link" href="src/index.html?category=sleeping-bags">
+            <img src="src/images/tents/category-sleepingbags.svg" alt="Sleeping Bags" style="width:80px;height:80px;" onerror="this.style.display='none'" />
+            <div class="category-label">Sleeping Bags</div>
+          </a>
+          <a class="category-link" href="src/index.html?category=hammocks">
+            <img src="src/images/tents/category-tents.svg" alt="Hammocks" style="width:80px;height:80px;" onerror="this.style.display='none'" />
+            <div class="category-label">Hammocks</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="products">
+        <h2>Top Products</h2>
+        <ul class="product-list">
+          <!-- Product cards will be rendered here dynamically by ProductList -->
+        </ul>
+      </section>
+    </main>
+    <footer id="main-footer"></footer>
+  </body>
+</html>

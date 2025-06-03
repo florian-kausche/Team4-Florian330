@@ -1,0 +1,105 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sleep Outside | North Face Alpine Guide 3-person tent</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="../js/product.js" type="module"></script>
+    <script src="../js/headerFooter.js" type="module"></script>
+    <script type="module">import { injectHeaderFooter } from '../js/headerFooter.js'; injectHeaderFooter();</script>
+  </head>
+
+  <body>
+    <!-- header will be injected here -->
+
+    <main class="divider">
+      <div class="hero">
+        <img
+          src="../images/banner-sm.jpg"
+          srcset="../images/banner-sm.jpg 500w, ../images/banner.jpg"
+          alt="image of a high mountain lake"
+        />
+        <div class="mission">
+          <p>
+            Our mission is to provide you with everything you need to sleep
+            outside comfortably at an affordable price.
+          </p>
+        </div>
+      </div>
+
+      <section class="product-detail">
+        <h3>The North Face</h3>
+
+        <h2 class="divider">Alpine Guide Tent - 3-Person, 4-Season</h2>
+
+        <img
+          class="divider"
+          src="../images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg"
+          alt="Alpine Guide Tent - 3-Person, 4-Season"
+        />
+
+        <p class="product-card__price">$349.99</p>
+
+        <p class="product__color">Canary Yellow/High Rise Grey</p>
+
+        <p class="product__description">
+          Be ready for any outdoor adventure in low elevations and high-alpine
+          environments alike with the hybrid design of The North Face&#39;s
+          Alpine Guide four-season tent. It is made from durable, waterproof
+          Featherlite NSL pole system and an easy to pitch design.
+        </p>
+
+        <div class="product-detail__add">
+          <button id="addToCart" data-id="985PR">Add to Cart</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer will be injected here -->
+    <script>
+      // Make Add to Cart button functional for this static product page
+      document.addEventListener("DOMContentLoaded", function() {
+        const addToCartBtn = document.getElementById("addToCart");
+        if (!addToCartBtn) return;
+        addToCartBtn.addEventListener("click", function() {
+          // Product data for The North Face Alpine Guide 3
+          const product = {
+            Id: "985PR",
+            Name: "The North Face Alpine Guide Tent - 3-Person, 4-Season",
+            NameWithoutBrand: "Alpine Guide Tent - 3-Person, 4-Season",
+            Brand: { Id: "1440", Name: "The North Face" },
+            Image: "../images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg",
+            FinalPrice: 349.99,
+            SuggestedRetailPrice: 500.00,
+            ListPrice: 349.99,
+            Colors: [{ ColorCode: "01", ColorName: "Canary Yellow/High Rise Grey" }],
+            DescriptionHtmlSimple: "Be ready for any outdoor adventure in low elevations and high-alpine environments alike with the hybrid design of The North Face's Alpine Guide four-season tent. It is made from durable, waterproof Featherlite NSL pole system and an easy to pitch design.",
+            quantity: 1
+          };
+          let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+          const existing = cart.find(item => item.Id === product.Id);
+          if (existing) {
+            existing.quantity = (existing.quantity || 1) + 1;
+          } else {
+            cart.push(product);
+          }
+          localStorage.setItem("so-cart", JSON.stringify(cart));
+          // Optionally update cart count in header if present
+          const cartCount = document.getElementById("cart-count");
+          if (cartCount) {
+            const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            cartCount.textContent = total;
+          }
+          // Redirect to cart/add.html
+          window.location.href = "/src/cart/add.html";
+        });
+      });
+    </script>
+  </body>
+</html>

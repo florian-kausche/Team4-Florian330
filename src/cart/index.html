@@ -1,0 +1,44 @@
+<!-- This is the cart page for Sleep Outside -->
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <!-- Meta tags for responsive design and character encoding -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Cart</title>
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- Cart functionality -->
+    <script src="../js/cart.js" type="module"></script>
+    <!-- Header and footer injection -->
+    <script src="../js/headerFooter.js" type="module"></script>
+    <script type="module">import { injectHeaderFooter } from '../js/headerFooter.js'; injectHeaderFooter();</script>
+  </head>
+
+  <body>
+    <header class="divider" id="main-header"></header>
+    <main class="divider">
+      <div class="hero">
+        <img
+          src="../images/banner-sm.jpg"
+          srcset="../images/banner-sm.jpg 500w, ../images/banner.jpg"
+          alt="image of a high mountain lake"
+        />
+        <div class="mission">
+          <p>
+            Our mission is to provide you with everything you need to sleep
+            outside comfortably at an affordable price.
+          </p>
+        </div>
+      </div>
+      <section class="products">
+        <h2>My Cart</h2>
+        <ul class="product-list">
+          <!-- Cart items will be dynamically inserted here -->
+        </ul>
+      </section>
+    </main>
+    <footer id="main-footer"></footer>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <!-- Meta tags for responsive design and character encoding -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Product Make and Name</title>
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- Product detail functionality -->
+    <script src="../js/product.js" type="module"></script>
+    <!-- Header and footer injection -->
+    <script src="../js/headerFooter.js" type="module"></script>
+    <script type="module">import { injectHeaderFooter } from '../js/headerFooter.js'; injectHeaderFooter();</script>
+  </head>
+
+  <body>
+    <header class="divider" id="main-header"></header>
+    <main class="divider">
+      <div class="hero">
+        <img
+          src="../images/banner-sm.jpg"
+          srcset="../images/banner-sm.jpg 500w, ../images/banner.jpg"
+          alt="image of a high mountain lake"
+        />
+
+        <div class="mission">
+          <p>
+            Our mission is to provide you with everything you need to sleep
+            outside comfortably at an affordable price.
+          </p>
+        </div>
+      </div>
+
+      <section class="product-detail">
+        <!-- Product details will be dynamically rendered here -->
+        <h2>Brand Name</h2>
+        <h3 class="divider">Product</h3>
+        <img
+          src="../images/camping-products.jpg"
+          alt="Sleep Outside Camping Products"
+          id="productImage"
+          class="divider"
+        />
+        <p id="productPrice" class="product-card__price">$99 <span id="discountBadge" class="discount-badge" style="display:none;"></span></p>
+        <p id="productColor" class="product__color">Color</p>
+        <p id="productDesc" class="product__description">Description</p>
+        <div class="product-detail__add">
+          <button id="addToCart" data-id="productId">Add to Cart</button>
+        </div>
+      </section>
+    </main>
+    <footer id="main-footer"></footer>
+    <!-- footer will be injected here -->
+  </body>
+</html>
