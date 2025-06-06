@@ -49,7 +49,11 @@ export function injectHeaderFooter() {
 export function updateCartCount() {
   const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
   // Sum all quantities, but ensure each item only counts its quantity once
-  const count = cartItems.reduce((sum, item) => sum + (typeof item.quantity === "number" ? item.quantity : 1), 0);
+  const count = cartItems.reduce(
+    (sum, item) =>
+      sum + (typeof item.quantity === "number" ? item.quantity : 1),
+    0,
+  );
   const badge = document.getElementById("cart-count");
   if (badge) badge.textContent = count;
 }

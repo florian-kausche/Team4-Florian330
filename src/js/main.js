@@ -10,13 +10,14 @@ if (document.querySelector(".product-list")) {
   const category = getParam("category") || "tents";
   // Set category title
   const titleMap = {
-    "tents": "Tents",
-    "backpacks": "Backpacks",
+    tents: "Tents",
+    backpacks: "Backpacks",
     "sleeping-bags": "Sleeping Bags",
-    "hammocks": "Hammocks"
+    hammocks: "Hammocks",
   };
   const titleElem = document.getElementById("category-title");
-  if (titleElem && titleMap[category]) titleElem.textContent = titleMap[category];
+  if (titleElem && titleMap[category])
+    titleElem.textContent = titleMap[category];
   // Use ProductData and ProductList for the selected category
   const dataSource = new ProductData(category);
   const listElement = document.querySelector(".product-list");

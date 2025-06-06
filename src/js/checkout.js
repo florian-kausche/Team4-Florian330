@@ -41,11 +41,11 @@ function clearAlertMessage() {
   if (alert) alert.style.display = "none";
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("checkoutForm");
   if (!form) return;
 
-  form.addEventListener("submit", function(event) {
+  form.addEventListener("submit", function (event) {
     let valid = true;
     let messages = [];
     const name = form.elements["name"].value.trim();
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const errorDiv = document.getElementById("checkoutErrors");
     if (!valid) {
       event.preventDefault();
-      errorDiv.innerHTML = messages.map(msg => `<p>${msg}</p>`).join("");
+      errorDiv.innerHTML = messages.map((msg) => `<p>${msg}</p>`).join("");
       errorDiv.style.display = "block";
     } else {
       errorDiv.style.display = "none";
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let subtotal = 0;
     let totalSavings = 0;
     let summaryList = "<ul>";
-    cart.forEach(item => {
+    cart.forEach((item) => {
       const qty = item.quantity || 1;
       const itemTotal = item.FinalPrice * qty;
       const itemSavings = (item.SuggestedRetailPrice - item.FinalPrice) * qty;
@@ -104,7 +104,10 @@ document.addEventListener("DOMContentLoaded", function() {
       summaryList += `<li><span class="summary-label">${item.Name} x${qty}</span> <span class="summary-value">$${itemTotal.toFixed(2)}</span></li>`;
     });
     summaryList += "</ul>";
-    let savingsLine = totalSavings > 0 ? `<div class="summary-savings">You saved <span style="color:#388e3c;font-weight:bold;">$${totalSavings.toFixed(2)}</span> on this order!</div>` : "";
+    let savingsLine =
+      totalSavings > 0
+        ? `<div class="summary-savings">You saved <span style="color:#388e3c;font-weight:bold;">$${totalSavings.toFixed(2)}</span> on this order!</div>`
+        : "";
     orderSummaryDiv.innerHTML = `
       ${summaryList}
       <div class="summary-total">Total: $${subtotal.toFixed(2)}</div>

@@ -12,7 +12,10 @@
 
     <script src="../js/product.js" type="module"></script>
     <script src="../js/headerFooter.js" type="module"></script>
-    <script type="module">import { injectHeaderFooter } from '../js/headerFooter.js'; injectHeaderFooter();</script>
+    <script type="module">
+      import { injectHeaderFooter } from "../js/headerFooter.js";
+      injectHeaderFooter();
+    </script>
   </head>
 
   <body>
@@ -63,26 +66,28 @@
     <!-- footer will be injected here -->
     <script>
       // Make Add to Cart button functional for this static product page
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const addToCartBtn = document.getElementById("addToCart");
         if (!addToCartBtn) return;
-        addToCartBtn.addEventListener("click", function() {
+        addToCartBtn.addEventListener("click", function () {
           // Product data for Cedar Ridge Rimrock 2
           const product = {
             Id: "344YJ",
             Name: "Cedar Ridge Rimrock Tent - 2-Person, 3-Season",
             NameWithoutBrand: "Rimrock Tent - 2-Person, 3-Season",
             Brand: { Id: "35027", Name: "Cedar Ridge" },
-            Image: "../images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg",
+            Image:
+              "../images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg",
             FinalPrice: 69.99,
             SuggestedRetailPrice: 89.99,
             ListPrice: 69.99,
             Colors: [{ ColorCode: "01", ColorName: "Rust/Clay" }],
-            DescriptionHtmlSimple: "Lightweight and ready for adventure, this Cedar Ridge Rimrock tent boasts a weather-ready design that includes a tub-style floor and factory-sealed rain fly.",
-            quantity: 1
+            DescriptionHtmlSimple:
+              "Lightweight and ready for adventure, this Cedar Ridge Rimrock tent boasts a weather-ready design that includes a tub-style floor and factory-sealed rain fly.",
+            quantity: 1,
           };
           let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
-          const existing = cart.find(item => item.Id === product.Id);
+          const existing = cart.find((item) => item.Id === product.Id);
           if (existing) {
             existing.quantity = (existing.quantity || 1) + 1;
           } else {
@@ -92,7 +97,10 @@
           // Optionally update cart count in header if present
           const cartCount = document.getElementById("cart-count");
           if (cartCount) {
-            const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            const total = cart.reduce(
+              (sum, item) => sum + (item.quantity || 1),
+              0,
+            );
             cartCount.textContent = total;
           }
           // Redirect to cart/add.html

@@ -1,6 +1,10 @@
 // cart.js - Handles rendering the shopping cart contents on the cart page
 // Imports utility for accessing local storage
-import { getLocalStorage, loadHeaderFooter, setLocalStorage } from "./utils.mjs";
+import {
+  getLocalStorage,
+  loadHeaderFooter,
+  setLocalStorage,
+} from "./utils.mjs";
 import { updateCartCount } from "./headerFooter.js";
 
 // Renders the cart items from local storage to the page
@@ -17,12 +21,18 @@ function cartItemTemplate(item) {
   const discounted = item.FinalPrice < item.SuggestedRetailPrice;
   let discountPercent = 0;
   if (item.SuggestedRetailPrice > 0) {
-    discountPercent = Math.round(100 * (item.SuggestedRetailPrice - item.FinalPrice) / item.SuggestedRetailPrice);
+    discountPercent = Math.round(
+      (100 * (item.SuggestedRetailPrice - item.FinalPrice)) /
+        item.SuggestedRetailPrice,
+    );
   }
   const qty = item.quantity || 1;
   const totalFinal = (item.FinalPrice * qty).toFixed(2);
   const totalOriginal = (item.SuggestedRetailPrice * qty).toFixed(2);
-  const totalSaved = ((item.SuggestedRetailPrice - item.FinalPrice) * qty).toFixed(2);
+  const totalSaved = (
+    (item.SuggestedRetailPrice - item.FinalPrice) *
+    qty
+  ).toFixed(2);
   let priceHTML = discounted
     ? `<span class="original-price">$${item.SuggestedRetailPrice.toFixed(2)}</span> <span class="final-price">$${item.FinalPrice.toFixed(2)}</span> <span class="discount-badge">${discountPercent}% OFF</span> <span class="discount-amount">(You save $${(item.SuggestedRetailPrice - item.FinalPrice).toFixed(2)} per item)</span>`
     : `$${item.FinalPrice.toFixed(2)}`;
@@ -45,13 +55,13 @@ function cartItemTemplate(item) {
 }
 
 function addRemoveListeners() {
-  document.querySelectorAll(".remove-from-cart").forEach(btn => {
-    btn.addEventListener("click", function(e) {
+  document.querySelectorAll(".remove-from-cart").forEach((btn) => {
+    btn.addEventListener("click", function (e) {
       e.preventDefault();
       const li = btn.closest(".cart-card");
       const id = li.getAttribute("data-id");
       let cartItems = getLocalStorage("so-cart") || [];
-      cartItems = cartItems.filter(item => String(item.Id) !== String(id));
+      cartItems = cartItems.filter((item) => String(item.Id) !== String(id));
       setLocalStorage("so-cart", cartItems);
       li.remove();
       updateCartCount();

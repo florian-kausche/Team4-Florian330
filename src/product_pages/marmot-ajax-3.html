@@ -13,7 +13,7 @@
     <script src="../js/product.js" type="module"></script>
     <script src="../js/headerFooter.js" type="module"></script>
     <script type="module">
-      import { injectHeaderFooter } from '../js/headerFooter.js';
+      import { injectHeaderFooter } from "../js/headerFooter.js";
       injectHeaderFooter();
     </script>
   </head>
@@ -66,26 +66,28 @@
     <!-- footer will be injected here -->
     <script>
       // Make Add to Cart button functional for this static product page
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const addToCartBtn = document.getElementById("addToCart");
         if (!addToCartBtn) return;
-        addToCartBtn.addEventListener("click", function() {
+        addToCartBtn.addEventListener("click", function () {
           // Product data for Marmot Ajax 3
           const product = {
             Id: "880RR",
             Name: "Marmot Ajax Tent - 3-Person, 3-Season",
             NameWithoutBrand: "Ajax Tent - 3-Person, 3-Season",
             Brand: { Id: "1308", Name: "Marmot" },
-            Image: "../images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg",
+            Image:
+              "../images/tents/marmot-ajax-tent-3-person-3-season-in-pale-pumpkin-terracotta~p~880rr_01~320.jpg",
             FinalPrice: 199.99,
-            SuggestedRetailPrice: 300.00,
+            SuggestedRetailPrice: 300.0,
             ListPrice: 199.99,
             Colors: [{ ColorCode: "01", ColorName: "Pale Pumpkin/Terracotta" }],
-            DescriptionHtmlSimple: "Get out and enjoy nature with Marmot's Ajax tent, featuring a smart design with durable, waterproof construction and two doors for easy access.",
-            quantity: 1
+            DescriptionHtmlSimple:
+              "Get out and enjoy nature with Marmot's Ajax tent, featuring a smart design with durable, waterproof construction and two doors for easy access.",
+            quantity: 1,
           };
           let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
-          const existing = cart.find(item => item.Id === product.Id);
+          const existing = cart.find((item) => item.Id === product.Id);
           if (existing) {
             existing.quantity = (existing.quantity || 1) + 1;
           } else {
@@ -95,7 +97,10 @@
           // Optionally update cart count in header if present
           const cartCount = document.getElementById("cart-count");
           if (cartCount) {
-            const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            const total = cart.reduce(
+              (sum, item) => sum + (item.quantity || 1),
+              0,
+            );
             cartCount.textContent = total;
           }
           // Redirect to cart/add.html

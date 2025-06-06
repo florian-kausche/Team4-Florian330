@@ -12,7 +12,10 @@
 
     <script src="../js/product.js" type="module"></script>
     <script src="../js/headerFooter.js" type="module"></script>
-    <script type="module">import { injectHeaderFooter } from '../js/headerFooter.js'; injectHeaderFooter();</script>
+    <script type="module">
+      import { injectHeaderFooter } from "../js/headerFooter.js";
+      injectHeaderFooter();
+    </script>
   </head>
 
   <body>
@@ -64,26 +67,30 @@
     <!-- footer will be injected here -->
     <script>
       // Make Add to Cart button functional for this static product page
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const addToCartBtn = document.getElementById("addToCart");
         if (!addToCartBtn) return;
-        addToCartBtn.addEventListener("click", function() {
+        addToCartBtn.addEventListener("click", function () {
           // Product data for The North Face Alpine Guide 3
           const product = {
             Id: "985PR",
             Name: "The North Face Alpine Guide Tent - 3-Person, 4-Season",
             NameWithoutBrand: "Alpine Guide Tent - 3-Person, 4-Season",
             Brand: { Id: "1440", Name: "The North Face" },
-            Image: "../images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg",
+            Image:
+              "../images/tents/the-north-face-alpine-guide-tent-3-person-4-season-in-canary-yellow-high-rise-grey~p~985pr_01~320.jpg",
             FinalPrice: 349.99,
-            SuggestedRetailPrice: 500.00,
+            SuggestedRetailPrice: 500.0,
             ListPrice: 349.99,
-            Colors: [{ ColorCode: "01", ColorName: "Canary Yellow/High Rise Grey" }],
-            DescriptionHtmlSimple: "Be ready for any outdoor adventure in low elevations and high-alpine environments alike with the hybrid design of The North Face's Alpine Guide four-season tent. It is made from durable, waterproof Featherlite NSL pole system and an easy to pitch design.",
-            quantity: 1
+            Colors: [
+              { ColorCode: "01", ColorName: "Canary Yellow/High Rise Grey" },
+            ],
+            DescriptionHtmlSimple:
+              "Be ready for any outdoor adventure in low elevations and high-alpine environments alike with the hybrid design of The North Face's Alpine Guide four-season tent. It is made from durable, waterproof Featherlite NSL pole system and an easy to pitch design.",
+            quantity: 1,
           };
           let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
-          const existing = cart.find(item => item.Id === product.Id);
+          const existing = cart.find((item) => item.Id === product.Id);
           if (existing) {
             existing.quantity = (existing.quantity || 1) + 1;
           } else {
@@ -93,7 +100,10 @@
           // Optionally update cart count in header if present
           const cartCount = document.getElementById("cart-count");
           if (cartCount) {
-            const total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            const total = cart.reduce(
+              (sum, item) => sum + (item.quantity || 1),
+              0,
+            );
             cartCount.textContent = total;
           }
           // Redirect to cart/add.html
