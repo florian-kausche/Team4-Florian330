@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Home</title>
     <!-- Main stylesheet -->
-    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <!-- Header and footer injection -->
-    <script src="src/js/headerFooter.js" type="module"></script>
-    <script src="src/js/main.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
+    <script src="js/headerFooter.js" type="module"></script>
     <script type="module">
-      import { injectHeaderFooter } from "/src/js/headerFooter.js";
+      import { injectHeaderFooter } from "./js/headerFooter.js";
       injectHeaderFooter();
     </script>
   </head>
@@ -22,8 +22,8 @@
     <main class="divider">
       <div class="hero">
         <img
-          src="src/images/banner-sm.jpg"
-          srcset="src/images/banner-sm.jpg 500w, src/images/banner.jpg"
+          src="images/banner-sm.jpg"
+          srcset="images/banner-sm.jpg 500w, images/banner.jpg"
           alt="image of a high mountain lake"
         />
 
@@ -58,26 +58,26 @@
 
       <section class="categories">
         <div class="category-list professional">
-          <a class="category-link" href="src/index.html?category=tents">
-            <img src="src/images/tents/category-backpacks.svg" alt="Tents" />
+          <a class="category-link" href="index.html?category=tents">
+            <img src="images/tents/category-backpacks.svg" alt="Tents" />
             <div class="category-label">Tents</div>
           </a>
-          <a class="category-link" href="src/index.html?category=backpacks">
-            <img src="src/images/tents/category-hammocks.svg" alt="Backpacks" />
+          <a class="category-link" href="index.html?category=backpacks">
+            <img src="images/tents/category-hammocks.svg" alt="Backpacks" />
             <div class="category-label">Backpacks</div>
           </a>
-          <a class="category-link" href="src/index.html?category=sleeping-bags">
+          <a class="category-link" href="index.html?category=sleeping-bags">
             <img
-              src="src/images/tents/category-sleepingbags.svg"
+              src="images/tents/category-sleepingbags.svg"
               alt="Sleeping Bags"
               style="width: 80px; height: 80px"
               onerror="this.style.display='none'"
             />
             <div class="category-label">Sleeping Bags</div>
           </a>
-          <a class="category-link" href="src/index.html?category=hammocks">
+          <a class="category-link" href="index.html?category=hammocks">
             <img
-              src="src/images/tents/category-tents.svg"
+              src="images/tents/category-tents.svg"
               alt="Hammocks"
               style="width: 80px; height: 80px"
               onerror="this.style.display='none'"
